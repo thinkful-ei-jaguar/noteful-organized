@@ -66,6 +66,7 @@ export default class AddNote extends Component {
             throw error
           })
         }
+        this.context.addNote();
         this.setState({
           success: {value: true}
         })

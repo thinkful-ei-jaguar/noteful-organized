@@ -41,6 +41,16 @@ class App extends Component {
         })
       });
   }
+
+  addNote = () => {
+    fetch('http://localhost:9090/notes')
+      .then(response => response.json())
+      .then(newNotes => {
+        return this.setState({
+          notes: newNotes
+        })
+      });
+  }
   
   componentDidMount() {
     fetch('http://localhost:9090/folders')
