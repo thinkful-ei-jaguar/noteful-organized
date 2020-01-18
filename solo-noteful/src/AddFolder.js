@@ -22,7 +22,6 @@ export default class AddFolder extends Component {
   }
 
   validateFolder() {
-    console.log(this.state.name.value);
     const nameCheck = this.state.name.value;
     if (nameCheck.length === 0) {
       return 'Name is required';
@@ -78,7 +77,6 @@ export default class AddFolder extends Component {
       id: {value: folderName},
       name: {value: folderName, touched: true}
     })
-    console.log(this.state.name);
   }
   
   render() {

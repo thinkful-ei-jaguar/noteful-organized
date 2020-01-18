@@ -78,7 +78,6 @@ export default class AddNote extends Component {
           error: {value: err.message},
           success: {value: false}
         })
-        console.log(err.message)
       })
   }
 
