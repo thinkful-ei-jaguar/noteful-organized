@@ -69,6 +69,7 @@ export default class AddNote extends Component {
         this.setState({
           success: {value: true}
         })
+        this.props.history.push('/');
         return res.json();
       })
       .catch(err => {
