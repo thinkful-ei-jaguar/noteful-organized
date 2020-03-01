@@ -10,16 +10,6 @@ function deleteBookmarkRequest(noteId, callback) {
       'content-type': 'application/json'
     },
   })
-    .then(res => {
-      if (!res.ok) {
-        // get the error message from the response,
-        return res.json().then(error => {
-          // then throw it
-          throw error
-        })
-      }
-      return res.json()
-    })
     .then(data => {
       // call the callback when the request is successful
       // this is where the App component can remove it from state
@@ -43,8 +33,8 @@ export default class MainView extends Component {
             {notes.map((note, i) => {
               return (
                 <li className='main-note-list' key={i}>
-                  <Link to={`../../note/${note.id}`}>{note.name}</Link>
-                  <p>Last modified: {note.modified.slice(0, 10)}</p>
+                  <Link to={`../../note/${note.id}`}>{note.note_name}</Link>
+                  <p>Last modified: {note.date_modified.slice(0, 10)}</p>
                   <button className='main-note-delete' onClick={() => {
                     deleteBookmarkRequest(
                         note.id,

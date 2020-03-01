@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Component } from 'react';
+
 import { Route, Link } from 'react-router-dom';
 import MainMain from './MainMain';
 import MainSidebar from './MainSidebar';
@@ -27,14 +29,18 @@ class App extends Component {
   }
   
   deleteNote = (noteId) => {
-    const updatedNotes = this.state.notes.filter(note => note.id !== noteId)
-    this.setState({
-      notes: updatedNotes
-    })
+    fetch(`${config.API_ENDPOINT}/notes`)
+      .then(response => response.json())
+      .then(newNotes => {
+        console.log('hello?')
+        return this.setState({
+          notes: newNotes
+        })
+      }); 
   }
 
   addFolder = () => {
-    fetch('${config.API_ENDPOINT}/folders')
+    fetch(`${config.API_ENDPOINT}/folders`)
       .then(response => response.json())
       .then(newFolders => {
         return this.setState({
@@ -44,7 +50,7 @@ class App extends Component {
   }
 
   addNote = () => {
-    fetch('${config.API_ENDPOINT}/notes')
+    fetch(`${config.API_ENDPOINT}/notes`)
       .then(response => response.json())
       .then(newNotes => {
         return this.setState({
@@ -54,14 +60,14 @@ class App extends Component {
   }
   
   componentDidMount() {
-    fetch('${config.API_ENDPOINT}/folders')
+    fetch(`${config.API_ENDPOINT}/folders`)
       .then(response => response.json())
       .then(newFolders => {
         return this.setState({
           folders: newFolders
         })
       });
-    fetch('${config.API_ENDPOINT}/notes')
+    fetch(`${config.API_ENDPOINT}/notes`)
       .then(response => response.json())
       .then(newNotes => {
         return this.setState({

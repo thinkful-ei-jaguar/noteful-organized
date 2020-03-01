@@ -15,20 +15,20 @@ export default class AddNote extends Component {
     super(props);
     this.state = {
       id:{
-        value: ''
+        value: 0
       },
 
-      name: {
+      note_name: {
         value: '',
         touched: false
       },
 
-      modified: {
+      date_modified: {
         value: new Date()
       },
 
-      folderId: {
-        value: ''
+      folder_id: {
+        value: 1
       },
 
       content: {
@@ -84,17 +84,16 @@ export default class AddNote extends Component {
   handleNewNote (event) {
     event.preventDefault();
     const newNote = JSON.stringify({
-      id: this.state.id.value,
-      name: this.state.name.value,
-      modified: this.state.modified.value ,
-      folderId: this.state.folderId.value,
+      note_name: this.state.note_name.value,
+      date_modified: this.state.date_modified.value ,
+      folder_id: this.state.folder_id.value,
       content: this.state.content.value
     })
     this.addNewNote(newNote);
   }
 
   validateName(name) {
-    const nameCheck = this.state.name.value.trim();
+    const nameCheck = this.state.note_name.value.trim();
     if (nameCheck.length === 0) {
       return 'Name is required';
     }
@@ -102,15 +101,15 @@ export default class AddNote extends Component {
 
   updateNameId(name) {
     this.setState({
-      id: {value: name},
-      name: {value: name, touched: true}
+      note_name: {value: name, touched: true}
     })
   }
 
   updateFolderId(folderName) {
-    const folderId = this.context.folders.find(folder => folder.name === folderName).id;
+    const folderId = this.context.folders.find(folder => folder.id == folderName).id;
+    console.log(this.context.folders)
     this.setState({
-      folderId: {value: folderId}
+      folder_id: {value: folderId}
     })
   }
 
@@ -123,7 +122,7 @@ export default class AddNote extends Component {
 
   render() {
     const folderDropdown = this.context.folders.map((folder, index) => {
-      return <option key={index} value={folder.name}>{folder.name}</option>
+      return <option key={index} value={folder.id}>{folder.folder_name}</option>
     });
 
     return (
@@ -140,9 +139,9 @@ export default class AddNote extends Component {
         </select>
         
         <button disabled={this.validateName()}>Create Note</button>
-        {this.state.name.touched && (<ValidationError message={this.validateName()} />)}
+        {this.state.note_name.touched && (<ValidationError message={this.validateName()} />)}
         {this.state.error.value !== '' && <ErrorMessage props={this.state.error.value} />}
-        {(this.state.error.value === '' && this.state.success.value === true) && <p>Successfully submitted new "{this.state.name.value}" note!</p>}
+        {(this.state.error.value === '' && this.state.success.value === true) && <p>Successfully submitted new "{this.state.note_name.value}" note!</p>}
         <Link to="/"><button>Home Page</button></Link>
       </form>
     )

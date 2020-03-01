@@ -16,7 +16,7 @@ export default class MainSidebar extends Component {
             return (
               <li className='main-folder-list' key={i}>
                 <NavLink to={`/folder/${folder.id}`} activeClassName='selectedFolder'> 
-                {folder.name}
+                {folder.folder_name}
                 </NavLink>
               </li>
             )

@@ -64,10 +64,8 @@ export default class AddFolder extends Component {
   handleNewFolder (event) {
     event.preventDefault();
     const newFolderName = this.state.name.value;
-    const newFolderId = newFolderName;
     const newFolder = JSON.stringify({
-      id: newFolderId,
-      name: newFolderName
+      folder_name: newFolderName
     })
     this.addNewFolder(newFolder);
     
@@ -75,7 +73,6 @@ export default class AddFolder extends Component {
 
   updateNameId(folderName) {
     this.setState({
-      id: {value: folderName},
       name: {value: folderName, touched: true}
     })
   }
