@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 export default class MainView extends Component {
- 
-
-
   render() {
-    
-    const { notes } = this.props.state;
+
+    if(!this.props.values) {
+      return <div>Loading</div>
+    }
     return (
+      
       <div className="main-main-div">
 
           <ul className='main-view-main'>
-            {notes.map((note, i) => {
+            {this.props.values.map((note, i) => {
               return (
                 <li className='main-note-list' key={i}>
-                  <Link to={`../../note/${note.id}`}>{note.name}</Link>
-                  <p>Last modified: {note.modified.slice(0, 10)}</p>
+                  <Link to={`../../note/${note.id}`}>{note.note_name}</Link>
+                  <p>Last modified: {note.date_modified.slice(0, 10)}</p>
                   <button className='main-note-delete'>Delete Note</button>
                 </li>
               )
@@ -25,6 +25,8 @@ export default class MainView extends Component {
           <button>Add note</button>
 
       </div>
-    )
+          )
   }
 }
+
+MainView.defaultProps = [];
