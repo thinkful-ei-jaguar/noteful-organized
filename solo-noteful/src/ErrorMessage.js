@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 const ErrorMessage = (error) => {
-  console.log(error.props);
     return (
       <>
         <h2>We're sorry, an error has occurred: </h2>

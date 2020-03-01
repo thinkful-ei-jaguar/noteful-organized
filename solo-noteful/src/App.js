@@ -32,7 +32,6 @@ class App extends Component {
     fetch(`${config.API_ENDPOINT}/notes`)
       .then(response => response.json())
       .then(newNotes => {
-        console.log('hello?')
         return this.setState({
           notes: newNotes
         })

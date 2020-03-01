@@ -107,7 +107,6 @@ export default class AddNote extends Component {
 
   updateFolderId(folderName) {
     const folderId = this.context.folders.find(folder => folder.id == folderName).id;
-    console.log(this.context.folders)
     this.setState({
       folder_id: {value: folderId}
     })
