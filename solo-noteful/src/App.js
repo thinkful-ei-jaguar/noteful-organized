@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   addFolder = () => {
-    fetch('http://localhost:9090/folders')
+    fetch('${config.API_ENDPOINT}/folders')
       .then(response => response.json())
       .then(newFolders => {
         return this.setState({
@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   addNote = () => {
-    fetch('http://localhost:9090/notes')
+    fetch('${config.API_ENDPOINT}/notes')
       .then(response => response.json())
       .then(newNotes => {
         return this.setState({
@@ -54,14 +54,14 @@ class App extends Component {
   }
   
   componentDidMount() {
-    fetch('http://localhost:9090/folders')
+    fetch('${config.API_ENDPOINT}/folders')
       .then(response => response.json())
       .then(newFolders => {
         return this.setState({
           folders: newFolders
         })
       });
-    fetch('http://localhost:9090/notes')
+    fetch('${config.API_ENDPOINT}/notes')
       .then(response => response.json())
       .then(newNotes => {
         return this.setState({

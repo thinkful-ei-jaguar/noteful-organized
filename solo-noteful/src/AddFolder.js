@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import notefulContext from './NotefulContext';
 import ErrorMessage from './ErrorMessage';
-import ValidationError from './ValidationError';;
+import ValidationError from './ValidationError';
+import config from './config'
 
 
 export default class AddFolder extends Component {
@@ -29,7 +30,7 @@ export default class AddFolder extends Component {
   }
 
   addNewFolder(folder) {
-    fetch(`http://localhost:9090/folders/`, {
+    fetch(`${config.API_ENDPOINT}/folders/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

@@ -3,7 +3,7 @@ import notefulContext from './NotefulContext'
 import ValidationError from './ValidationError';
 import ErrorMessage from './ErrorMessage';
 import { Link } from 'react-router-dom';
-
+import config from './config'
 
 
 
@@ -50,7 +50,7 @@ export default class AddNote extends Component {
     this.setState({
       error: {value: ''}
     })
-    fetch(`http://localhost:9090/notes/`, {
+    fetch(`${config.API_ENDPOINT}/notes/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
