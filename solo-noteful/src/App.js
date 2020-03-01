@@ -29,7 +29,12 @@ class App extends Component {
   }
   
   deleteNote = (noteId) => {
-    fetch(`${config.API_ENDPOINT}/notes`)
+    fetch(`${config.API_ENDPOINT}/notes`, {
+      // NEW - add a Content-Type header
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
       .then(response => response.json())
       .then(newNotes => {
         return this.setState({
@@ -39,7 +44,12 @@ class App extends Component {
   }
 
   addFolder = () => {
-    fetch(`${config.API_ENDPOINT}/folders`)
+    fetch(`${config.API_ENDPOINT}/folders`, {
+      // NEW - add a Content-Type header
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
       .then(response => response.json())
       .then(newFolders => {
         return this.setState({
@@ -49,7 +59,12 @@ class App extends Component {
   }
 
   addNote = () => {
-    fetch(`${config.API_ENDPOINT}/notes`)
+    fetch(`${config.API_ENDPOINT}/notes`, {
+      // NEW - add a Content-Type header
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
       .then(response => response.json())
       .then(newNotes => {
         return this.setState({
@@ -59,14 +74,24 @@ class App extends Component {
   }
   
   componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/folders`)
+    fetch(`${config.API_ENDPOINT}/folders`, {
+      // NEW - add a Content-Type header
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
       .then(response => response.json())
       .then(newFolders => {
         return this.setState({
           folders: newFolders
         })
       });
-    fetch(`${config.API_ENDPOINT}/notes`)
+    fetch(`${config.API_ENDPOINT}/notes`, {
+      // NEW - add a Content-Type header
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
       .then(response => response.json())
       .then(newNotes => {
         return this.setState({
