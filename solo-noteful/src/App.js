@@ -12,6 +12,7 @@ import AddFolder from './AddFolder';
 import AddFolderSidebar from './AddFolderSidebar';
 import AddNote from './AddNote';
 import ErrorBoundary from './ErrorBoundary';
+import config from './config'
 
 
 
